@@ -15,3 +15,8 @@ RUN sed -i "s/'database_name_here'/'wp'/g" wp-config.php && \
     sed -i "s/'username_here'/'root'/g" wp-config.php && \
     sed -i "s/'password_here'/getenv('DB_ENV_MYSQL_ROOT_PASSWORD')/g" wp-config.php && \
     sed -i "s/'localhost'/'db'/g" wp-config.php
+
+ADD entrypoint.sh /entrypoint.sh
+RUN ehmod +x /entrypoint.sh
+
+ENTRYPOINT /entrypoint.sh
